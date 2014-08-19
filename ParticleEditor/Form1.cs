@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,33 @@ namespace ParticleEditor
         public Form1()
         {
             InitializeComponent();
+
+            LoadPresets();
+        }
+
+        private void LoadPresets()
+        {
+            foreach (var file in Directory.EnumerateFiles("Content/Templates/"))
+	        {
+                var item = new ToolStripMenuItem(Path.GetFileNameWithoutExtension(file));
+                item.Click += PresetClicked;
+                presetsToolStripMenuItem.DropDownItems.Add(item);
+            }
+        }
+
+        void PresetClicked(object sender, EventArgs e)
+        {
+            string name = (sender as ToolStripMenuItem).Text;
+            try
+            {
+                string fullPath = "Content/Templates/" + name + ".json";
+                string content = File.ReadAllText(fullPath);
+                LoadParticleSystem(GetParticleSystemFromJson(content));
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void LoadParticleSystem(ParticleSystemSettings settings) 
@@ -66,27 +94,10 @@ namespace ParticleEditor
 
         private void buttonExport_Click(object sender, EventArgs e)
         {
-            var content = ToJson(particleSystemWindow1.Settings);
-
-            var window = new ExportWindow(content);
-            window.ShowDialog();
         }
 
         private void buttonImport_Click(object sender, EventArgs e)
         {
-            var window = new ImportWindow();
-            if (window.ShowDialog() == DialogResult.OK) 
-            {
-                string content = window.Content;
-                try
-                {
-                    LoadParticleSystem(GetParticleSystemFromJson(content));
-                }
-                catch (Exception ex) 
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
         }
 
         private ParticleSystemSettings GetParticleSystemFromJson(string content)
@@ -106,11 +117,6 @@ namespace ParticleEditor
 
         private void buttonBgColor_Click(object sender, EventArgs e)
         {
-            var dialog = new ColorDialog();
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) 
-            {
-                particleSystemWindow1.ClearColor = new Microsoft.Xna.Framework.Color(dialog.Color.R, dialog.Color.G, dialog.Color.B, dialog.Color.A);
-            }
         }
 
         private void buttonAddEmitter_Click(object sender, EventArgs e)
@@ -165,6 +171,91 @@ namespace ParticleEditor
         {
             particleSystemWindow1.Settings.Name = textBoxName.Text;
         }
+
+        #region Menu items
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure?", "Quitting", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) 
+            {
+                this.Close();
+            }
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadDefault();
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var dialog = new SaveFileDialog();
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) 
+            {
+                try
+                {
+                    var json = ToJson(particleSystemWindow1.Settings);
+                    File.WriteAllText(dialog.FileName, json);
+                }
+                catch (Exception ex) 
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var dialog = new OpenFileDialog();
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                try
+                {
+                    var json = File.ReadAllText(dialog.FileName);
+                    LoadParticleSystem(GetParticleSystemFromJson(json));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void backgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var dialog = new ColorDialog();
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                particleSystemWindow1.ClearColor = new Microsoft.Xna.Framework.Color(dialog.Color.R, dialog.Color.G, dialog.Color.B, dialog.Color.A);
+            }
+        }
+
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var window = new ImportWindow();
+            if (window.ShowDialog() == DialogResult.OK)
+            {
+                string content = window.Content;
+                try
+                {
+                    LoadParticleSystem(GetParticleSystemFromJson(content));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var content = ToJson(particleSystemWindow1.Settings);
+
+            var window = new ExportWindow(content);
+            window.ShowDialog();
+        }
+
+        #endregion
     }
 
     class BlendStateJsonConverter : JsonConverter 
