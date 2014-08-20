@@ -113,6 +113,7 @@ namespace ParticleEditor
         private void buttonReplay_Click(object sender, EventArgs e)
         {
             particleSystemWindow1.Reset();
+            particleSystemWindow1.Play();
         }
 
         private void buttonBgColor_Click(object sender, EventArgs e)

@@ -55,6 +55,10 @@ namespace ParticleEditor.Controls
         {
             screen.ResetAndRecreate();
         }
+        internal void Play()
+        {
+            screen.Play();
+        }
 
         public ParticleSystemSettings Settings { get { return screen.Settings;  } }
 
@@ -67,15 +71,19 @@ namespace ParticleEditor.Controls
 
         protected override void Draw()
         {
-            if ((DateTime.Now - oldTime).Milliseconds < 1f)
+            // only draw, but cap to 60 fps
+            if ((DateTime.Now - oldTime).Milliseconds < 16f)
+            {
+                GraphicsDevice.Clear(Color.CornflowerBlue);
+                screen.Draw();
                 return;
+            }
 
             time = DateTime.Now;
             TimeSpan diff = time - oldTime;
-
             float dt = diff.Milliseconds;
-
             screen.Update(dt);
+
             GraphicsDevice.Clear(Color.CornflowerBlue);
             screen.Draw();
             
@@ -103,5 +111,6 @@ namespace ParticleEditor.Controls
         }
         
         #endregion
+
     }
 }

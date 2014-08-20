@@ -65,6 +65,11 @@ namespace ParticleEditor.Screens
             system.Reset();
         }
 
+        internal void Play()
+        {
+            system.Play();
+        }
+
         public void ResetAndRecreate() 
         {
             system.ResetAndRecreate();

@@ -65,6 +65,7 @@ namespace ParticleEditor.Controls
             checkBox1.Checked = EmitterSettings.loop;
             numericUpDownCapacity.Value = EmitterSettings.capacity;
             textBoxName.Text = EmitterSettings.Name;
+            textBoxSpawnCount.Text = EmitterSettings.spawnCount.ToString();
         }
 
 
@@ -122,6 +123,18 @@ namespace ParticleEditor.Controls
         private void textBoxName_TextChanged(object sender, EventArgs e)
         {
             EmitterSettings.Name = textBoxName.Text;
+        }
+
+        private void textBoxSpawnCount_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                EmitterSettings.spawnCount = int.Parse(textBoxSpawnCount.Text);
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

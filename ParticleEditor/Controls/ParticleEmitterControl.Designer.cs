@@ -54,8 +54,10 @@
             this.numericUpDownCapacity = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxSpawnCount = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -100,7 +102,7 @@
             this.groupBox1.Controls.Add(this.floatRangeSliderFrequency);
             this.groupBox1.Location = new System.Drawing.Point(0, 385);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(402, 148);
+            this.groupBox1.Size = new System.Drawing.Size(385, 148);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Frequency";
@@ -110,7 +112,7 @@
             this.floatRangeSliderFrequency.Dock = System.Windows.Forms.DockStyle.Fill;
             this.floatRangeSliderFrequency.Location = new System.Drawing.Point(3, 16);
             this.floatRangeSliderFrequency.Name = "floatRangeSliderFrequency";
-            this.floatRangeSliderFrequency.Size = new System.Drawing.Size(396, 129);
+            this.floatRangeSliderFrequency.Size = new System.Drawing.Size(379, 129);
             this.floatRangeSliderFrequency.TabIndex = 0;
             // 
             // groupBox2
@@ -120,7 +122,7 @@
             this.groupBox2.Controls.Add(this.floatRangeSliderLifeTime);
             this.groupBox2.Location = new System.Drawing.Point(0, 539);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(402, 148);
+            this.groupBox2.Size = new System.Drawing.Size(385, 148);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "LifeTime";
@@ -130,7 +132,7 @@
             this.floatRangeSliderLifeTime.Dock = System.Windows.Forms.DockStyle.Fill;
             this.floatRangeSliderLifeTime.Location = new System.Drawing.Point(3, 16);
             this.floatRangeSliderLifeTime.Name = "floatRangeSliderLifeTime";
-            this.floatRangeSliderLifeTime.Size = new System.Drawing.Size(396, 129);
+            this.floatRangeSliderLifeTime.Size = new System.Drawing.Size(379, 129);
             this.floatRangeSliderLifeTime.TabIndex = 0;
             // 
             // groupBox3
@@ -140,7 +142,7 @@
             this.groupBox3.Controls.Add(this.floatRangeSliderRotation);
             this.groupBox3.Location = new System.Drawing.Point(0, 693);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(402, 148);
+            this.groupBox3.Size = new System.Drawing.Size(385, 148);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Rotation";
@@ -150,7 +152,7 @@
             this.floatRangeSliderRotation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.floatRangeSliderRotation.Location = new System.Drawing.Point(3, 16);
             this.floatRangeSliderRotation.Name = "floatRangeSliderRotation";
-            this.floatRangeSliderRotation.Size = new System.Drawing.Size(396, 129);
+            this.floatRangeSliderRotation.Size = new System.Drawing.Size(379, 129);
             this.floatRangeSliderRotation.TabIndex = 0;
             // 
             // groupBox4
@@ -160,7 +162,7 @@
             this.groupBox4.Controls.Add(this.vectorRangeSliderVelocity);
             this.groupBox4.Location = new System.Drawing.Point(3, 847);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(402, 80);
+            this.groupBox4.Size = new System.Drawing.Size(385, 80);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Velocity";
@@ -170,7 +172,7 @@
             this.vectorRangeSliderVelocity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vectorRangeSliderVelocity.Location = new System.Drawing.Point(3, 16);
             this.vectorRangeSliderVelocity.Name = "vectorRangeSliderVelocity";
-            this.vectorRangeSliderVelocity.Size = new System.Drawing.Size(396, 61);
+            this.vectorRangeSliderVelocity.Size = new System.Drawing.Size(379, 61);
             this.vectorRangeSliderVelocity.TabIndex = 0;
             // 
             // groupBox5
@@ -180,7 +182,7 @@
             this.groupBox5.Controls.Add(this.vectorRangeSliderPosition);
             this.groupBox5.Location = new System.Drawing.Point(3, 933);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(402, 80);
+            this.groupBox5.Size = new System.Drawing.Size(385, 80);
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Position";
@@ -190,7 +192,7 @@
             this.vectorRangeSliderPosition.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vectorRangeSliderPosition.Location = new System.Drawing.Point(3, 16);
             this.vectorRangeSliderPosition.Name = "vectorRangeSliderPosition";
-            this.vectorRangeSliderPosition.Size = new System.Drawing.Size(396, 61);
+            this.vectorRangeSliderPosition.Size = new System.Drawing.Size(379, 61);
             this.vectorRangeSliderPosition.TabIndex = 0;
             // 
             // groupBox6
@@ -200,7 +202,7 @@
             this.groupBox6.Controls.Add(this.vectorRangeSliderStartScale);
             this.groupBox6.Location = new System.Drawing.Point(3, 1019);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(402, 80);
+            this.groupBox6.Size = new System.Drawing.Size(385, 80);
             this.groupBox6.TabIndex = 7;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Start Scale";
@@ -210,7 +212,7 @@
             this.vectorRangeSliderStartScale.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vectorRangeSliderStartScale.Location = new System.Drawing.Point(3, 16);
             this.vectorRangeSliderStartScale.Name = "vectorRangeSliderStartScale";
-            this.vectorRangeSliderStartScale.Size = new System.Drawing.Size(396, 61);
+            this.vectorRangeSliderStartScale.Size = new System.Drawing.Size(379, 61);
             this.vectorRangeSliderStartScale.TabIndex = 0;
             // 
             // groupBox7
@@ -220,7 +222,7 @@
             this.groupBox7.Controls.Add(this.vectorRangeSliderEndScale);
             this.groupBox7.Location = new System.Drawing.Point(3, 1105);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(402, 80);
+            this.groupBox7.Size = new System.Drawing.Size(385, 80);
             this.groupBox7.TabIndex = 8;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "End Scale";
@@ -230,7 +232,7 @@
             this.vectorRangeSliderEndScale.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vectorRangeSliderEndScale.Location = new System.Drawing.Point(3, 16);
             this.vectorRangeSliderEndScale.Name = "vectorRangeSliderEndScale";
-            this.vectorRangeSliderEndScale.Size = new System.Drawing.Size(396, 61);
+            this.vectorRangeSliderEndScale.Size = new System.Drawing.Size(379, 61);
             this.vectorRangeSliderEndScale.TabIndex = 0;
             // 
             // label2
@@ -258,7 +260,7 @@
             this.groupBox8.Controls.Add(this.colorRangePicker1);
             this.groupBox8.Location = new System.Drawing.Point(0, 210);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(396, 64);
+            this.groupBox8.Size = new System.Drawing.Size(379, 64);
             this.groupBox8.TabIndex = 3;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Colors";
@@ -268,7 +270,7 @@
             this.colorRangePicker1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.colorRangePicker1.Location = new System.Drawing.Point(3, 16);
             this.colorRangePicker1.Name = "colorRangePicker1";
-            this.colorRangePicker1.Size = new System.Drawing.Size(390, 45);
+            this.colorRangePicker1.Size = new System.Drawing.Size(373, 45);
             this.colorRangePicker1.TabIndex = 0;
             // 
             // groupBox9
@@ -279,7 +281,7 @@
             this.groupBox9.Controls.Add(this.vector2Picker1);
             this.groupBox9.Location = new System.Drawing.Point(0, 280);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(402, 99);
+            this.groupBox9.Size = new System.Drawing.Size(385, 99);
             this.groupBox9.TabIndex = 3;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Gravity";
@@ -289,7 +291,7 @@
             this.vector2Picker1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vector2Picker1.Location = new System.Drawing.Point(3, 16);
             this.vector2Picker1.Name = "vector2Picker1";
-            this.vector2Picker1.Size = new System.Drawing.Size(396, 80);
+            this.vector2Picker1.Size = new System.Drawing.Size(379, 80);
             this.vector2Picker1.TabIndex = 0;
             // 
             // checkBox1
@@ -330,6 +332,8 @@
             this.groupBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox10.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox10.Controls.Add(this.textBoxSpawnCount);
+            this.groupBox10.Controls.Add(this.label5);
             this.groupBox10.Controls.Add(this.textBoxName);
             this.groupBox10.Controls.Add(this.label4);
             this.groupBox10.Controls.Add(this.label1);
@@ -341,10 +345,18 @@
             this.groupBox10.Controls.Add(this.textBoxSources);
             this.groupBox10.Location = new System.Drawing.Point(3, 3);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(396, 201);
+            this.groupBox10.Size = new System.Drawing.Size(379, 201);
             this.groupBox10.TabIndex = 4;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Properties";
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(9, 32);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(168, 20);
+            this.textBoxName.TabIndex = 16;
+            this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
             // 
             // label4
             // 
@@ -355,13 +367,22 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "Name:";
             // 
-            // textBoxName
+            // label5
             // 
-            this.textBoxName.Location = new System.Drawing.Point(9, 32);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(168, 20);
-            this.textBoxName.TabIndex = 16;
-            this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(187, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(76, 13);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Particle Count:";
+            // 
+            // textBoxSpawnCount
+            // 
+            this.textBoxSpawnCount.Location = new System.Drawing.Point(190, 32);
+            this.textBoxSpawnCount.Name = "textBoxSpawnCount";
+            this.textBoxSpawnCount.Size = new System.Drawing.Size(168, 20);
+            this.textBoxSpawnCount.TabIndex = 18;
+            this.textBoxSpawnCount.TextChanged += new System.EventHandler(this.textBoxSpawnCount_TextChanged);
             // 
             // ParticleEmitterControl
             // 
@@ -379,7 +400,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "ParticleEmitterControl";
-            this.Size = new System.Drawing.Size(411, 767);
+            this.Size = new System.Drawing.Size(394, 767);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -426,5 +447,7 @@
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxSpawnCount;
+        private System.Windows.Forms.Label label5;
     }
 }
